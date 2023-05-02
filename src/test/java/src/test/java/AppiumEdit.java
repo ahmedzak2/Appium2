@@ -1,3 +1,5 @@
+package src.test.java;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -16,7 +18,7 @@ public class AppiumEdit {
 
 
             AppiumDriverLocalService serviceBuilder = new AppiumServiceBuilder()
-                    .withAppiumJS(new File("C:\\Users\\ZakariaSaadA\\node_modules\\appium\\lib\\main.js"))
+                    .withAppiumJS(new File("C:\\Users\\20112\\IdeaProjects\\appium\\src\\test\\java\\src\\test\\resources\\ApiDemos-debug.apk"))
                     .withIPAddress("127.0.0.1")
                     .usingPort(4723)
                     .build();

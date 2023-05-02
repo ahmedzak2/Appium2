@@ -1,3 +1,5 @@
+package src.test.java;
+
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Appium extends BaseTest{
+public class Appium extends BaseTest {
     // AppiumDriver driver2;
     /**
      * there 2 type of By one generic for appium and web
@@ -24,7 +26,6 @@ public class Appium extends BaseTest{
         /*to set and show the specification of app we use class UiAutomator2Options
          * */
         driver.findElement(preference).click();
-        Thread.sleep(100000);
-        driver.quit();
+        Thread.sleep(10000);
     }
 }
