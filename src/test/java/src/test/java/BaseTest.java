@@ -1,7 +1,9 @@
 package src.test.java;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -12,6 +14,7 @@ import java.time.Duration;
 public class BaseTest {
     public AndroidDriver driver;
 public    String url = "http://localhost:4723/wd/hub";
+public String  url2= "http://localhost:4723";
 @BeforeTest
 
     public void setup() throws MalformedURLException {
@@ -19,12 +22,12 @@ public    String url = "http://localhost:4723/wd/hub";
         // options.setDeviceName("sdk_gphone64_x86_64");
         options.setDeviceName("sdk_gphone64_x86_64");
         //options.setPlatformName("Android");
-        options.setPlatformVersion("12a");
+        options.setPlatformVersion("12");
         // options.setAutomationName("Appium");
         options.setApp("C:\\Users\\20112\\IdeaProjects\\appium\\src\\test\\java\\src\\test\\resources\\ApiDemos-debug.apk");
         //options.setApp(System.getProperty("C:\\Users\\20112\\IdeaProjects\\appium\\src\\test\\resources\\ApiDemos-debug.apk"));
         //  driver2 = new AppiumDriver(new URL(url),options);
-        driver = new AndroidDriver(new URL(url),options);
+        driver = new AndroidDriver(new URL(url2),options);
         /*different locator appium surrport
          * ID -Name -Class Name - Accessibility ID - Xpath - ccs clestor -UIAUtomator */
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -34,4 +37,23 @@ public    String url = "http://localhost:4723/wd/hub";
     public void tearDown(){
         driver.quit();
     }
+
+    /*
+    * to scroll to end of page
+    * */
+
+    public void scrollToEndAction()
+    {
+        boolean canScrollMore;
+        do
+        {
+            canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                    "left", 100, "top", 100, "width", 200, "height", 200,
+                    "direction", "down",
+                    "percent", 3.0
+
+            ));
+        }while(canScrollMore);
+    }
+
 }
