@@ -6,7 +6,9 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;
@@ -17,7 +19,7 @@ public class BaseTest {
     public AndroidDriver driver;
 public    String url = "http://localhost:4723/wd/hub";
 public String  url2= "http://localhost:4723";
-@BeforeTest
+@BeforeMethod
 
     public void setup() throws MalformedURLException {
         UiAutomator2Options options=new UiAutomator2Options();
@@ -35,7 +37,7 @@ public String  url2= "http://localhost:4723";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 }
-    @AfterTest
+    @AfterMethod
     public void tearDown(){
         driver.quit();
     }
